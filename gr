@@ -1,0 +1,316 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="GrowthFunnelX helps businesses audit marketing measurement, find tracking gaps, and make smarter optimization and budget decisions.">
+  <title>GrowthFunnelX | Measure Better. Grow Smarter.</title>
+  <style>
+    :root {
+      --navy: #0b1224;
+      --navy-2: #111d36;
+      --blue: #3b82f6;
+      --blue-light: #dbeafe;
+      --cyan: #67e8f9;
+      --ink: #15213a;
+      --muted: #64748b;
+      --line: #e2e8f0;
+      --paper: #f7f9fc;
+      --white: #ffffff;
+      --radius: 22px;
+      --shadow: 0 22px 60px rgba(15, 23, 42, .10);
+    }
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      margin: 0;
+      color: var(--ink);
+      background: var(--white);
+      font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      line-height: 1.6;
+    }
+    a { color: inherit; text-decoration: none; }
+    .container { width: min(1120px, calc(100% - 40px)); margin: 0 auto; }
+    .nav {
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 22px 0; gap: 18px;
+    }
+    .brand { display: flex; align-items: center; gap: 11px; font-weight: 800; letter-spacing: -.04em; font-size: 1.18rem; color: var(--navy); }
+    .brand-mark {
+      width: 38px; height: 38px; border-radius: 12px; display: grid; place-items: center;
+      color: white; background: linear-gradient(135deg, var(--blue), #1d4ed8);
+      box-shadow: 0 8px 20px rgba(59,130,246,.25);
+    }
+    .brand-mark svg { width: 23px; height: 23px; }
+    .nav-links { display: flex; align-items: center; gap: 28px; color: #475569; font-size: .92rem; font-weight: 600; }
+    .nav-links a:hover { color: var(--blue); }
+    .btn {
+      display: inline-flex; align-items: center; justify-content: center; gap: 9px;
+      background: var(--blue); color: white; border: 1px solid var(--blue);
+      padding: 13px 19px; border-radius: 12px; font-weight: 750; font-size: .94rem;
+      transition: transform .18s ease, box-shadow .18s ease, background .18s ease;
+      box-shadow: 0 9px 22px rgba(59,130,246,.22);
+    }
+    .btn:hover { background: #2563eb; transform: translateY(-2px); box-shadow: 0 13px 28px rgba(59,130,246,.28); }
+    .btn-secondary { background: transparent; color: white; border-color: rgba(255,255,255,.3); box-shadow: none; }
+    .btn-secondary:hover { background: rgba(255,255,255,.08); }
+    .hero {
+      position: relative; overflow: hidden; color: white; background: var(--navy);
+      border-radius: 30px; margin-bottom: 76px;
+    }
+    .hero::before {
+      content: ""; position: absolute; width: 600px; height: 600px; right: -130px; top: -270px;
+      background: radial-gradient(circle, rgba(59,130,246,.38), rgba(59,130,246,0) 68%); pointer-events: none;
+    }
+    .hero::after {
+      content: ""; position: absolute; width: 450px; height: 450px; right: 15%; bottom: -340px;
+      background: radial-gradient(circle, rgba(103,232,249,.16), rgba(103,232,249,0) 70%); pointer-events: none;
+    }
+    .hero-inner { position: relative; z-index: 1; display: grid; grid-template-columns: 1.08fr .92fr; gap: 45px; align-items: center; padding: 72px 64px 76px; }
+    .eyebrow { display: inline-flex; align-items: center; gap: 9px; color: #bfdbfe; font-size: .77rem; text-transform: uppercase; letter-spacing: .14em; font-weight: 800; }
+    .eyebrow-dot { width: 7px; height: 7px; background: var(--cyan); border-radius: 50%; box-shadow: 0 0 0 5px rgba(103,232,249,.12); }
+    h1 { font-size: clamp(2.7rem, 5vw, 4.65rem); letter-spacing: -.065em; line-height: 1.02; margin: 22px 0 22px; max-width: 650px; }
+    h1 span { color: #7db0ff; }
+    .hero-copy { max-width: 560px; color: #cbd5e1; font-size: 1.08rem; margin: 0 0 28px; }
+    .hero-actions { display: flex; flex-wrap: wrap; gap: 12px; }
+    .trust-line { color: #94a3b8; font-size: .83rem; margin-top: 22px; }
+    .visual-card {
+      background: rgba(255,255,255,.06); border: 1px solid rgba(255,255,255,.13);
+      border-radius: 24px; padding: 23px; box-shadow: 0 24px 60px rgba(0,0,0,.18); backdrop-filter: blur(8px);
+    }
+    .visual-head { display: flex; align-items: center; justify-content: space-between; margin-bottom: 22px; gap: 12px; }
+    .visual-title { font-weight: 750; font-size: .94rem; }
+    .live-pill { border: 1px solid rgba(103,232,249,.3); color: #a5f3fc; background: rgba(103,232,249,.08); border-radius: 99px; padding: 5px 9px; font-size: .7rem; font-weight: 700; }
+    .metric-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+    .metric { background: rgba(255,255,255,.06); border: 1px solid rgba(255,255,255,.08); border-radius: 15px; padding: 16px; }
+    .metric-label { color: #9eacc3; font-size: .76rem; margin-bottom: 7px; }
+    .metric-value { color: white; font-size: 1.45rem; font-weight: 800; letter-spacing: -.04em; }
+    .metric-note { color: #86efac; font-size: .72rem; margin-top: 3px; }
+    .chart { margin-top: 14px; border-radius: 15px; padding: 16px; background: rgba(255,255,255,.04); }
+    .chart-top { display: flex; justify-content: space-between; font-size: .75rem; color: #a9b7cb; margin-bottom: 10px; }
+    .bars { height: 75px; display: flex; align-items: end; gap: 9px; }
+    .bar { flex: 1; border-radius: 5px 5px 2px 2px; background: linear-gradient(180deg, #67e8f9, #3b82f6); opacity: .9; }
+    .section { padding: 0 0 76px; }
+    .section-heading { max-width: 720px; margin-bottom: 30px; }
+    .kicker { color: var(--blue); font-weight: 800; text-transform: uppercase; letter-spacing: .12em; font-size: .76rem; }
+    h2 { font-size: clamp(2rem, 3.4vw, 3rem); letter-spacing: -.05em; line-height: 1.12; margin: 10px 0 13px; color: var(--navy); }
+    .section-intro { color: var(--muted); font-size: 1.03rem; margin: 0; max-width: 650px; }
+    .three-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 17px; }
+    .service-card { border: 1px solid var(--line); border-radius: var(--radius); padding: 25px; background: white; transition: transform .18s ease, box-shadow .18s ease; }
+    .service-card:hover { transform: translateY(-4px); box-shadow: var(--shadow); }
+    .icon-box { display: grid; place-items: center; width: 47px; height: 47px; border-radius: 14px; color: #1d4ed8; background: #eff6ff; margin-bottom: 18px; }
+    .icon-box svg { width: 23px; height: 23px; }
+    h3 { color: var(--navy); letter-spacing: -.025em; font-size: 1.16rem; margin: 0 0 9px; }
+    .service-card p { color: var(--muted); font-size: .92rem; margin: 0 0 15px; }
+    .service-card ul { padding-left: 18px; color: #475569; font-size: .87rem; margin: 0; }
+    .service-card li { margin: 6px 0; }
+    .process { background: var(--paper); padding: 70px 0; margin-bottom: 76px; }
+    .process-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 18px; margin-top: 34px; }
+    .step { border-top: 2px solid #bfdbfe; padding-top: 18px; }
+    .step-number { color: var(--blue); font-weight: 850; font-size: .78rem; letter-spacing: .1em; }
+    .step h3 { margin-top: 8px; }
+    .step p { color: var(--muted); font-size: .9rem; margin: 0; }
+    .why-grid { display: grid; grid-template-columns: .85fr 1.15fr; gap: 45px; align-items: start; }
+    .why-panel { background: var(--navy); color: white; border-radius: 24px; padding: 30px; }
+    .why-panel h3 { color: white; font-size: 1.45rem; }
+    .why-panel p { color: #cbd5e1; margin-bottom: 0; }
+    .check-list { display: grid; gap: 19px; }
+    .check-item { display: grid; grid-template-columns: 30px 1fr; gap: 13px; }
+    .check { width: 28px; height: 28px; border-radius: 9px; background: #dcfce7; color: #15803d; display: grid; place-items: center; font-weight: 900; }
+    .check-item p { color: var(--muted); margin: 4px 0 0; font-size: .93rem; }
+    .cta-section { padding-bottom: 76px; }
+    .cta-box { background: linear-gradient(120deg, #eff6ff, #f8fafc); border: 1px solid #dbeafe; border-radius: 28px; padding: 45px; display: flex; align-items: center; justify-content: space-between; gap: 25px; }
+    .cta-box h2 { font-size: clamp(1.8rem, 3vw, 2.55rem); margin-top: 0; }
+    .cta-box p { color: var(--muted); margin: 0; max-width: 600px; }
+    footer { border-top: 1px solid var(--line); padding: 25px 0 35px; color: var(--muted); font-size: .85rem; }
+    .footer-inner { display: flex; justify-content: space-between; align-items: center; gap: 15px; flex-wrap: wrap; }
+    .footer-brand { color: var(--navy); font-weight: 800; }
+    .small-note { font-size: .78rem; color: #94a3b8; margin-top: 10px; }
+    @media (max-width: 850px) {
+      .hero-inner { grid-template-columns: 1fr; padding: 52px 35px; gap: 35px; }
+      .visual-card { max-width: 520px; }
+      .three-grid { grid-template-columns: 1fr; }
+      .process-grid { grid-template-columns: 1fr 1fr; }
+      .why-grid { grid-template-columns: 1fr; gap: 25px; }
+      .cta-box { align-items: flex-start; flex-direction: column; padding: 32px; }
+      .nav-links { gap: 14px; }
+    }
+    @media (max-width: 560px) {
+      .container { width: min(100% - 28px, 1120px); }
+      .nav { padding: 16px 0; }
+      .nav-links a:not(.btn) { display: none; }
+      .nav-links .btn { padding: 10px 12px; font-size: .82rem; }
+      .hero { border-radius: 22px; margin-bottom: 58px; }
+      .hero-inner { padding: 42px 22px; }
+      h1 { font-size: 2.75rem; }
+      .hero-copy { font-size: 1rem; }
+      .visual-card { padding: 15px; }
+      .metric { padding: 12px; }
+      .metric-value { font-size: 1.2rem; }
+      .section { padding-bottom: 58px; }
+      .process { padding: 55px 0; margin-bottom: 58px; }
+      .process-grid { grid-template-columns: 1fr; }
+      .cta-section { padding-bottom: 58px; }
+      .cta-box { padding: 25px; }
+    }
+  </style>
+</head>
+<body>
+  <!-- Replace the placeholder Google Form URL in the script at the bottom. -->
+  <header class="container">
+    <nav class="nav" aria-label="Main navigation">
+      <a class="brand" href="#" aria-label="GrowthFunnelX home">
+        <span class="brand-mark" aria-hidden="true">
+          <svg viewBox="0 0 24 24" fill="none"><path d="M4 17.5 9 12l3.4 3.2L20 6.5" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/><path d="M15.5 6.5H20v4.5" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </span>
+        <span>GrowthFunnelX</span>
+      </a>
+      <div class="nav-links">
+        <a href="#services">Services</a>
+        <a href="#process">Our approach</a>
+        <a href="#about">Why us</a>
+        <a class="btn" href="https://docs.google.com/forms/d/e/1FAIpQLScHPTUGs1UusDg_12fG6JgWp1Q8iUUoUrdEeCNRRx7VjKIOUQ/viewform">Request an audit <span aria-hidden="true">↗</span></a>
+      </div>
+    </nav>
+  </header>
+
+  <main>
+    <section class="container hero">
+      <div class="hero-inner">
+        <div>
+          <div class="eyebrow"><span class="eyebrow-dot"></span> Marketing measurement & growth analytics</div>
+          <h1>Measure better.<br><span>Grow smarter.</span></h1>
+          <p class="hero-copy">We audit your marketing measurement setup, uncover tracking gaps, and analyze performance data to help you make smarter optimization and budget decisions.</p>
+          <div class="hero-actions">
+            <a class="btn" href="https://docs.google.com/forms/d/e/1FAIpQLScHPTUGs1UusDg_12fG6JgWp1Q8iUUoUrdEeCNRRx7VjKIOUQ/viewform">Request a measurement audit <span aria-hidden="true">→</span></a>
+            <a class="btn btn-secondary" href="#services">Explore services</a>
+          </div>
+          <p class="trust-line">Marketing experience + technical measurement + data-driven analysis.</p>
+        </div>
+        <div class="visual-card" aria-label="Illustrative marketing measurement dashboard">
+          <div class="visual-head">
+            <div class="visual-title">Marketing measurement overview</div>
+            <span class="live-pill">ILLUSTRATIVE</span>
+          </div>
+          <div class="metric-grid">
+            <div class="metric"><div class="metric-label">Tracking health</div><div class="metric-value">Validate</div><div class="metric-note">Check before scaling</div></div>
+            <div class="metric"><div class="metric-label">Conversion journey</div><div class="metric-value">Discover</div><div class="metric-note">Find funnel gaps</div></div>
+            <div class="metric"><div class="metric-label">Campaign efficiency</div><div class="metric-value">Analyze</div><div class="metric-note">Compare outcomes</div></div>
+            <div class="metric"><div class="metric-label">Growth opportunities</div><div class="metric-value">Prioritize</div><div class="metric-note">Act on evidence</div></div>
+          </div>
+          <div class="chart">
+            <div class="chart-top"><span>From measurement to decisions</span><span>01 — 04</span></div>
+            <div class="bars" aria-hidden="true">
+              <div class="bar" style="height:35%"></div><div class="bar" style="height:48%"></div><div class="bar" style="height:42%"></div><div class="bar" style="height:63%"></div><div class="bar" style="height:55%"></div><div class="bar" style="height:78%"></div><div class="bar" style="height:68%"></div><div class="bar" style="height:92%"></div>
+            </div>
+          </div>
+          <p class="small-note">Illustrative graphic only — not client performance data.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="container section" id="services">
+      <div class="section-heading">
+        <div class="kicker">What we do</div>
+        <h2>Turn measurement into meaningful action.</h2>
+        <p class="section-intro">Understand what is being measured, how marketing is performing, and where to focus your next improvement.</p>
+      </div>
+      <div class="three-grid">
+        <article class="service-card">
+          <div class="icon-box" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none"><circle cx="10.8" cy="10.8" r="6.8" stroke="currentColor" stroke-width="1.8"/><path d="m16 16 4.5 4.5M8 10.8l1.8 1.8 3.8-4" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+          <h3>Measurement & Tracking Audit</h3>
+          <p>Assess whether your tracking setup is collecting the right data and identify gaps that may affect decisions.</p>
+          <ul><li>GTM and GA4 review</li><li>Conversion and event QA</li><li>UTM and data-quality checks</li><li>Prioritized findings report</li></ul>
+        </article>
+        <article class="service-card">
+          <div class="icon-box" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none"><path d="M4 19V5m0 14h16M7 15l4-4 3 2 5-6" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/><circle cx="19" cy="7" r="1.5" fill="currentColor"/></svg></div>
+          <h3>Performance & Funnel Analysis</h3>
+          <p>Analyze available campaign, website and lead data to identify performance patterns and optimization opportunities.</p>
+          <ul><li>Spend, CPL and conversion analysis</li><li>Landing-page and funnel drop-offs</li><li>Lead-quality and CRM checks, where available</li><li>Budget test and optimization recommendations</li></ul>
+        </article>
+        <article class="service-card">
+          <div class="icon-box" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none"><rect x="3" y="4" width="18" height="16" rx="2" stroke="currentColor" stroke-width="1.8"/><path d="M7 15v-3m5 3V8m5 7v-5" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg></div>
+          <h3>Implementation & Reporting</h3>
+          <p>Turn agreed recommendations into practical tracking improvements and clear performance reporting.</p>
+          <ul><li>GTM and GA4 implementation</li><li>Conversion tracking QA</li><li>Looker Studio dashboards</li><li>Documentation and handover</li></ul>
+        </article>
+      </div>
+    </section>
+
+    <section class="process" id="process">
+      <div class="container">
+        <div class="section-heading">
+          <div class="kicker">Our approach</div>
+          <h2>From tracking questions to a clear action plan.</h2>
+          <p class="section-intro">A practical process that starts with evidence and ends with prioritized next steps—not assumptions or promises of guaranteed growth.</p>
+        </div>
+        <div class="process-grid">
+          <div class="step"><div class="step-number">STEP 01</div><h3>Audit</h3><p>Review the measurement architecture, events, conversions and available data sources.</p></div>
+          <div class="step"><div class="step-number">STEP 02</div><h3>Analyze</h3><p>Investigate campaign performance, funnel behavior and data quality.</p></div>
+          <div class="step"><div class="step-number">STEP 03</div><h3>Prioritize</h3><p>Rank opportunities by likely impact, effort, risk and confidence in the evidence.</p></div>
+          <div class="step"><div class="step-number">STEP 04</div><h3>Improve</h3><p>Implement agreed changes, validate tracking and monitor relevant KPIs.</p></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="container section" id="about">
+      <div class="why-grid">
+        <div class="why-panel">
+          <div class="eyebrow"><span class="eyebrow-dot"></span> Why GrowthFunnelX</div>
+          <h3>Marketing and technology, connected.</h3>
+          <p>Marketing data is useful only when the measurement is dependable and the analysis leads to a decision. GrowthFunnelX brings campaign understanding and technical tracking together to help teams see the full picture.</p>
+        </div>
+        <div class="check-list">
+          <div class="check-item"><div class="check">✓</div><div><h3>Marketing context</h3><p>Campaigns, CPL, ROAS, conversion journeys and the business questions behind the numbers.</p></div></div>
+          <div class="check-item"><div class="check">✓</div><div><h3>Technical measurement</h3><p>GTM, GA4, data layers, event tracking and conversion validation.</p></div></div>
+          <div class="check-item"><div class="check">✓</div><div><h3>Actionable recommendations</h3><p>Clear findings and next steps based on available evidence, business context and data limitations.</p></div></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="container cta-section" id="contact">
+      <div class="cta-box">
+        <div>
+          <div class="kicker">Start a conversation</div>
+          <h2>Let's find what's holding your measurement back.</h2>
+          <p>Tell us a little about your business and what you want to improve. We'll review your request and discuss whether an audit or analysis is the right starting point.</p>
+        </div>
+        <div>
+          <a class="btn" id="form-link" href="https://docs.google.com/forms/d/e/1FAIpQLScHPTUGs1UusDg_12fG6JgWp1Q8iUUoUrdEeCNRRx7VjKIOUQ/viewform" target="_blank" rel="noopener noreferrer">Request a measurement review <span aria-hidden="true">↗</span></a>
+          <p class="small-note">Opens a short inquiry form. No obligation.</p>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="container footer-inner">
+      <div><span class="footer-brand">GrowthFunnelX</span><span> · Marketing Measurement & Growth Analytics</span></div>
+      <div>Measure accurately. Analyze intelligently. Optimize strategically.</div>
+      <div>© <span id="year"></span> GrowthFunnelX</div>
+    </div>
+  </footer>
+
+  <script>
+    /*
+      SETUP:
+      1. Create a Google Form for new project inquiries.
+      2. Copy the responder URL (usually https://docs.google.com/forms/d/e/FORM_ID/viewform).
+      3. Replace the placeholder URL below with your actual Google Form URL.
+      4. In Google Forms, open Responses → Link to Sheets to save responses directly to a Google Sheet.
+    */
+    const GOOGLE_FORM_URL = "https://docs.google.com/forms/REPLACE_WITH_YOUR_FORM_URL";
+    const formLink = document.getElementById("form-link");
+    if (GOOGLE_FORM_URL.includes("REPLACE_WITH_YOUR_FORM_URL")) {
+      formLink.href = "https://docs.google.com/forms/";
+      formLink.addEventListener("click", function (event) {
+        event.preventDefault();
+        alert("Add your Google Form responder URL in index.html first. See the setup comments near the bottom of the file.");
+      });
+    } else {
+      formLink.href = GOOGLE_FORM_URL;
+    }
+    document.getElementById("year").textContent = new Date().getFullYear();
+  </script>
+</body>
+</html>
